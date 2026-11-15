@@ -3,6 +3,7 @@
 import React, { useCallback, useState } from 'react';
 import { useApp } from '../lib/AppContext';
 import { JuriciousLogo } from './JuriciousLogo';
+import { SocialLinks } from './SocialLinks';
 
 const NAV_LINKS = [
   { id: 'platforms', label: 'Web & Mobile Apps' },
@@ -80,8 +81,9 @@ export function Navbar() {
             </button>
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden items-center gap-3 sm:flex">
+          {/* Desktop CTA & Social Icons */}
+          <div className="hidden items-center gap-4 sm:flex">
+            <SocialLinks size="sm" variant="pill" className="hidden xl:flex" />
             <button
               onClick={() => handleJoinWaitlist('Navbar Join the waitlist button')}
               className="flex h-12 min-h-[48px] cursor-pointer items-center justify-center rounded-md bg-[#FF9933] px-6 text-sm font-semibold text-black shadow-sm transition-colors hover:bg-[#ffa94d] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none active:bg-[#e68524]"
@@ -161,6 +163,11 @@ export function Navbar() {
             >
               Join the waitlist
             </button>
+          </div>
+
+          <div className="pt-3 border-t border-[#262626] flex items-center justify-between">
+            <span className="text-xs text-[#A3A3A3] font-mono">Connect with chambers:</span>
+            <SocialLinks size="sm" variant="pill" />
           </div>
         </div>
       )}

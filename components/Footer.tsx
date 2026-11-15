@@ -3,6 +3,7 @@
 import React from 'react';
 import { useApp } from '../lib/AppContext';
 import { JuriciousLogo } from './JuriciousLogo';
+import { SocialLinks } from './SocialLinks';
 
 export function Footer() {
   const { openFeedbackModal, setCurrentView } = useApp();
@@ -19,9 +20,13 @@ export function Footer() {
     <footer className="w-full bg-[#0A0A0A] border-t border-[#1A1A1A] py-12 text-[#A3A3A3]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#1A1A1A]">
-          {/* Brand & Tagline */}
-          <div className="flex flex-col items-start gap-1">
+          {/* Brand & Social */}
+          <div className="flex flex-col sm:flex-row items-center gap-6">
             <JuriciousLogo variant="horizontal" size="sm" theme="dark" />
+            <div className="flex items-center gap-2 sm:border-l sm:border-[#262626] sm:pl-6">
+              <span className="text-xs text-[#737373] font-mono mr-1 hidden sm:inline">Connect:</span>
+              <SocialLinks size="sm" variant="pill" />
+            </div>
           </div>
 
           {/* Links */}
