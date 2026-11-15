@@ -52,72 +52,87 @@ export function PlatformShowcase() {
           </p>
 
           {/* Interactive Platform Switcher */}
-          <div className="mt-8 inline-flex items-center p-1 rounded-xl bg-[#141414] border border-[#262626] shadow-lg">
-            <button
-              onClick={() => setActiveTab('dual')}
-              className={`px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer flex items-center gap-2 ${activeTab === 'dual'
-                ? 'bg-[#FF9933] text-black font-semibold shadow-md'
-                : 'text-[#A3A3A3] hover:text-white hover:bg-[#1F1F1F]'
-                }`}
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <span>Dual Platform View</span>
-              <span className={`text-[10px] px-1.5 py-0.2 rounded ${activeTab === 'dual' ? 'bg-black/20 text-black' : 'bg-[#262626] text-[#FF9933]'}`}>
-                Full Ecosystem
-              </span>
-            </button>
+          <div className="mt-8 flex justify-center w-full px-2">
+            <div className="w-full sm:w-auto max-w-full overflow-x-auto scrollbar-none flex sm:inline-flex items-center justify-start sm:justify-center p-1 sm:p-1.5 rounded-xl bg-[#141414] border border-[#262626] shadow-lg gap-1">
+              <button
+                type="button"
+                onClick={() => setActiveTab('dual')}
+                className={`flex-1 sm:flex-initial px-2.5 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap ${activeTab === 'dual'
+                  ? 'bg-[#FF9933] text-black font-semibold shadow-md'
+                  : 'text-[#A3A3A3] hover:text-white hover:bg-[#1F1F1F]'
+                  }`}
+              >
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span>
+                  <span className="inline md:hidden">Dual View</span>
+                  <span className="hidden md:inline">Dual Platform View</span>
+                </span>
+                <span className={`hidden lg:inline-block text-[10px] px-1.5 py-0.5 rounded font-mono ${activeTab === 'dual' ? 'bg-black/20 text-black' : 'bg-[#262626] text-[#FF9933]'}`}>
+                  Full Ecosystem
+                </span>
+              </button>
 
-            <button
-              onClick={() => setActiveTab('web')}
-              className={`px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer flex items-center gap-2 ${activeTab === 'web'
-                ? 'bg-[#FF9933] text-black font-semibold shadow-md'
-                : 'text-[#A3A3A3] hover:text-white hover:bg-[#1F1F1F]'
-                }`}
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-              </svg>
-              <span>Web Command Center</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('web')}
+                className={`flex-1 sm:flex-initial px-2.5 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap ${activeTab === 'web'
+                  ? 'bg-[#FF9933] text-black font-semibold shadow-md'
+                  : 'text-[#A3A3A3] hover:text-white hover:bg-[#1F1F1F]'
+                  }`}
+              >
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+                <span>
+                  <span className="inline sm:hidden">Web App</span>
+                  <span className="hidden sm:inline">Web Command Center</span>
+                </span>
+              </button>
 
-            <button
-              onClick={() => setActiveTab('mobile')}
-              className={`px-4 sm:px-5 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer flex items-center gap-2 ${activeTab === 'mobile'
-                ? 'bg-[#FF9933] text-black font-semibold shadow-md'
-                : 'text-[#A3A3A3] hover:text-white hover:bg-[#1F1F1F]'
-                }`}
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              <span>Mobile Apps (iOS & Android)</span>
-            </button>
+              <button
+                type="button"
+                onClick={() => setActiveTab('mobile')}
+                className={`flex-1 sm:flex-initial px-2.5 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all cursor-pointer flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap ${activeTab === 'mobile'
+                  ? 'bg-[#FF9933] text-black font-semibold shadow-md'
+                  : 'text-[#A3A3A3] hover:text-white hover:bg-[#1F1F1F]'
+                  }`}
+              >
+                <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span>
+                  <span className="inline sm:hidden">Mobile App</span>
+                  <span className="hidden sm:inline">Mobile Apps (iOS &amp; Android)</span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Visual Mockup Container */}
-        <div className="relative mx-auto rounded-2xl bg-gradient-to-b from-[#17181C] to-[#0E0F12] border border-[#262626] p-4 sm:p-7 lg:p-10 shadow-2xl">
+        <div className="relative mx-auto rounded-2xl bg-gradient-to-b from-[#17181C] to-[#0E0F12] border border-[#262626] p-3 sm:p-7 lg:p-10 shadow-2xl">
           {/* Top Status Bar of the Showcase Card */}
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-[#222329] mb-8 text-xs text-[#8E8E93]">
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1C1D24] border border-[#2E303B] text-white font-mono text-[11px]">
+          <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 pb-4 sm:pb-6 border-b border-[#222329] mb-6 sm:mb-8 text-[11px] sm:text-xs text-[#8E8E93]">
+            <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#1C1D24] border border-[#2E303B] text-white font-mono text-[10px] sm:text-[11px]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#2E9E5B] animate-ping" />
                 <span>Real-Time Bi-Directional Sync</span>
               </span>
               <span className="hidden sm:inline text-[#555]">|</span>
-              <span className="hidden sm:inline font-devanagari text-[#A3A3A3]">
+              <span className="hidden md:inline font-devanagari text-[#A3A3A3]">
                 वि.सं. २०८३ कार्तिक १३ (च्याम्बर प्रत्यक्ष सक्रिय)
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap text-[10px] sm:text-xs">
               <span className="px-2 py-0.5 rounded bg-[#1C1D24] text-[#A3A3A3] border border-[#2E303B]">
-                Desktop · iPad · iPhone · Android
+                <span className="sm:hidden">Web · Mobile</span>
+                <span className="hidden sm:inline">Desktop · iPad · iPhone · Android</span>
               </span>
               <span className="px-2 py-0.5 rounded bg-[#FF9933]/10 text-[#FF9933] font-medium border border-[#FF9933]/20">
-                Offline-First Architecture
+                Offline-First
               </span>
             </div>
           </div>
@@ -233,7 +248,7 @@ export function PlatformShowcase() {
                 </div>
 
                 {/* Main Web Screenshot */}
-                <div className="relative aspect-[1024/723] w-full bg-[#0E0F12]">
+                <div className="relative aspect-1024/723 w-full bg-[#0E0F12]">
                   <Image
                     src="/platforms/juricious-web-dashboard.png"
                     alt="Juricious Desktop Web Application with full chambers management in Nepali and Bikram Sambat"
@@ -285,7 +300,7 @@ export function PlatformShowcase() {
                     <span className="w-2 h-2 rounded-full bg-[#111] mr-3" />
                     <span className="w-2.5 h-2.5 rounded-full bg-[#0a192f]/60" />
                   </div>
-                  <div className="rounded-[28px] overflow-hidden relative aspect-[341/772] w-full bg-[#0A0A0A] border border-[#222]">
+                  <div className="rounded-[28px] overflow-hidden relative aspect-341/772 w-full bg-[#0A0A0A] border border-[#222]">
                     <Image
                       src="/platforms/juricious-mobile-app.png"
                       alt="Juricious Mobile App on smartphone"
@@ -313,9 +328,9 @@ export function PlatformShowcase() {
                   </p>
                 </div>
 
-                <div className="space-y-3.5">
+                <div className="space-y-3.5">shrink-0
                   <div className="p-4 rounded-lg bg-[#14151B] border border-[#262833] flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-md bg-[#FF9933]/10 border border-[#FF9933]/30 flex items-center justify-center text-[#FF9933] font-bold text-sm flex-shrink-0">
+                    <div className="w-8 h-8 rounded-md bg-[#FF9933]/10 border border-[#FF9933]/30 flex items-center justify-center text-[#FF9933] font-bold text-sm shrink-0">
                       ०१
                     </div>
                     <div>
@@ -327,7 +342,7 @@ export function PlatformShowcase() {
                   </div>
 
                   <div className="p-4 rounded-lg bg-[#14151B] border border-[#262833] flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-md bg-[#FF9933]/10 border border-[#FF9933]/30 flex items-center justify-center text-[#FF9933] font-bold text-sm flex-shrink-0">
+                    <div className="w-8 h-8 rounded-md bg-[#FF9933]/10 border border-[#FF9933]/30 flex items-center justify-center text-[#FF9933] font-bold text-sm shrink-0">
                       ०२
                     </div>
                     <div>
@@ -339,7 +354,7 @@ export function PlatformShowcase() {
                   </div>
 
                   <div className="p-4 rounded-lg bg-[#14151B] border border-[#262833] flex items-start gap-3">
-                    <div className="w-8 h-8 rounded-md bg-[#FF9933]/10 border border-[#FF9933]/30 flex items-center justify-center text-[#FF9933] font-bold text-sm flex-shrink-0">
+                    <div className="w-8 h-8 rounded-md bg-[#FF9933]/10 border border-[#FF9933]/30 flex items-center justify-center text-[#FF9933] font-bold text-sm shrink-0">
                       ०३
                     </div>
                     <div>
@@ -446,7 +461,7 @@ export function PlatformShowcase() {
         </div>
 
         {/* CTA Bar */}
-        <div className="mt-12 p-6 sm:p-8 rounded-xl bg-gradient-to-r from-[#17181E] via-[#14151B] to-[#17181E] border border-[#2E303B] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-12 p-6 sm:p-8 rounded-xl bg-linear-to-r from-[#17181E] via-[#14151B] to-[#17181E] border border-[#2E303B] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-bold uppercase tracking-wider text-[#FF9933]">
