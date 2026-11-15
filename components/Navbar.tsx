@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import React, { useCallback, useState } from 'react';
-import { useApp } from '../lib/AppContext';
-import { JuriciousLogo } from './JuriciousLogo';
-import { SocialLinks } from './SocialLinks';
+import React, { useCallback, useState } from "react";
+import { useApp } from "../lib/AppContext";
+import { JuriciousLogo } from "./JuriciousLogo";
+import { SocialLinks } from "./SocialLinks";
 
 const NAV_LINKS = [
-  { id: 'platforms', label: 'Web & Mobile Apps' },
-  { id: 'working-today', label: 'What works today' },
-  { id: 'day-in-chambers', label: 'A day in chambers' },
-  { id: 'coming-soon', label: 'Coming soon' },
+  { id: "platforms", label: "Web & Mobile Apps" },
+  { id: "working-today", label: "What works today" },
+  { id: "day-in-chambers", label: "A day in chambers" },
+  { id: "coming-soon", label: "Coming soon" },
 ] as const;
 
 export function Navbar() {
@@ -19,11 +19,11 @@ export function Navbar() {
   const scrollToSection = useCallback(
     (id: string) => {
       setMobileMenuOpen(false);
-      setActiveTab('public-site');
+      setActiveTab("public-site");
       // Defer until after the tab switch has painted so the section exists.
       requestAnimationFrame(() => {
         const el = document.getElementById(id);
-        el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     },
     [setActiveTab],
@@ -42,7 +42,7 @@ export function Navbar() {
       className="sticky top-0 z-40 w-full border-b border-[#1A1A1A] bg-[#0A0A0A]"
       aria-label="Primary"
     >
-      <div className="mx-auto sm:max-w-full max-w-[80vw] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[80vw] px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between gap-4">
           {/* Logo */}
           <a
@@ -50,7 +50,7 @@ export function Navbar() {
             aria-label="Juricious home"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('hero');
+              scrollToSection("hero");
             }}
             className="group flex items-center rounded p-1 focus-visible:ring-2 focus-visible:ring-[#FF9933] focus-visible:outline-none"
           >
@@ -85,8 +85,10 @@ export function Navbar() {
           <div className="hidden items-center gap-4 sm:flex">
             <SocialLinks size="sm" variant="pill" className="hidden xl:flex" />
             <button
-              onClick={() => handleJoinWaitlist('Navbar Join the waitlist button')}
-              className="flex h-12 min-h-[48px] cursor-pointer items-center justify-center rounded-md bg-[#FF9933] px-6 text-sm font-semibold text-black shadow-sm transition-colors hover:bg-[#ffa94d] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none active:bg-[#e68524]"
+              onClick={() =>
+                handleJoinWaitlist("Navbar Join the waitlist button")
+              }
+              className="flex h-12 min-h-12 cursor-pointer items-center justify-center rounded-md bg-[#FF9933] px-6 text-sm font-semibold text-black shadow-sm transition-colors hover:bg-[#ffa94d] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none active:bg-[#e68524]"
             >
               Join the waitlist
             </button>
@@ -97,7 +99,7 @@ export function Navbar() {
             <button
               onClick={() => setMobileMenuOpen((o) => !o)}
               className="flex h-12 w-12 items-center justify-center rounded text-white hover:text-[#FF9933] focus-visible:ring-2 focus-visible:ring-[#FF9933] focus-visible:outline-none"
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-menu"
             >
@@ -157,16 +159,18 @@ export function Navbar() {
           <div className="pt-2">
             <button
               onClick={() =>
-                handleJoinWaitlist('Mobile Menu Join the waitlist button')
+                handleJoinWaitlist("Mobile Menu Join the waitlist button")
               }
-              className="flex h-12 min-h-[48px] w-full cursor-pointer items-center justify-center rounded-md bg-[#FF9933] px-6 text-base font-semibold text-black transition-colors hover:bg-[#ffa94d] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none active:bg-[#e68524]"
+              className="flex h-12 min-h-12 w-full cursor-pointer items-center justify-center rounded-md bg-[#FF9933] px-6 text-base font-semibold text-black transition-colors hover:bg-[#ffa94d] focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none active:bg-[#e68524]"
             >
               Join the waitlist
             </button>
           </div>
 
           <div className="pt-3 border-t border-[#262626] flex items-center justify-between">
-            <span className="text-xs text-[#A3A3A3] font-mono">Connect with chambers:</span>
+            <span className="text-xs text-[#A3A3A3] font-mono">
+              Connect with chambers:
+            </span>
             <SocialLinks size="sm" variant="pill" />
           </div>
         </div>
