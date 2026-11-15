@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%" fill="none">
+  <rect width="400" height="240" rx="10" fill="#141414" stroke="#262626"/>
+  
+  <!-- Court Counter Slip -->
+  <g transform="translate(30, 20)">
+    <rect width="210" height="200" rx="6" fill="#FFFFFF" stroke="#CCCCCC"/>
+    
+    <!-- Slip Header -->
+    <text x="105" y="24" fill="#0A0A0A" font-family="serif" font-size="11" font-weight="bold" text-anchor="middle">काठमाडौँ जिल्ला अदालत</text>
+    <text x="105" y="36" fill="#5C5C5C" font-family="system-ui" font-size="8" text-anchor="middle">तारेख भर्पाई (TAREEKH SLIP)</text>
+    <line x1="16" y1="44" x2="194" y2="44" stroke="#0A0A0A"/>
+
+    <text x="16" y="60" fill="#0A0A0A" font-family="system-ui" font-size="9">मुद्दा नं: ०८१-CP-०४९२</text>
+    <text x="16" y="74" fill="#0A0A0A" font-family="system-ui" font-size="9">फाँट: ७ (Babar Mahal)</text>
+    
+    <!-- Next Tareekh Box -->
+    <rect x="16" y="86" width="178" height="42" rx="4" fill="#F7F7F7" stroke="#0A0A0A" stroke-width="1.5"/>
+    <text x="24" y="102" fill="#5C5C5C" font-family="system-ui" font-size="8">अर्को तारेख (NEXT TAREEKH):</text>
+    <text x="24" y="120" fill="#0A0A0A" font-family="serif" font-size="14" font-weight="bold">२०८३ मंसिर १५ गते</text>
+
+    <!-- Official Court Clerk Stamp -->
+    <g transform="translate(110, 134)">
+      <circle cx="34" cy="30" r="26" fill="#FFF5F5" stroke="#E51937" stroke-width="1.5" stroke-dasharray="3 1"/>
+      <text x="34" y="26" fill="#E51937" font-family="system-ui" font-size="7" font-weight="bold" text-anchor="middle">अदालत फाँट नं ७</text>
+      <text x="34" y="38" fill="#E51937" font-family="monospace" font-size="7" text-anchor="middle">OFFICIAL</text>
+    </g>
+
+    <text x="16" y="160" fill="#5C5C5C" font-family="system-ui" font-size="8">फाँटवाला दस्तखत: के.पी. दाहाल</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M 252 120 L 278 120 M 270 112 L 278 120 L 270 128" stroke="#2E9E5B" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Offline Sync Badge -->
+  <g transform="translate(290, 40)">
+    <rect width="80" height="160" rx="8" fill="#0A0A0A" stroke="#2E9E5B" stroke-width="1.5"/>
+    <circle cx="40" cy="40" r="18" fill="#EBF7F0"/>
+    <text x="40" y="46" fill="#2E9E5B" font-size="18" font-weight="bold" text-anchor="middle">✓</text>
+    
+    <text x="40" y="80" fill="#FFFFFF" font-family="system-ui" font-size="9" font-weight="bold" text-anchor="middle">LOGGED</text>
+    <text x="40" y="94" fill="#2E9E5B" font-family="system-ui" font-size="8" text-anchor="middle">3 SECONDS</text>
+    
+    <rect x="8" y="110" width="64" height="34" rx="4" fill="#1A1A1A"/>
+    <text x="40" y="124" fill="#A3A3A3" font-family="system-ui" font-size="7" text-anchor="middle">Offline Saved</text>
+    <text x="40" y="136" fill="#FF9933" font-family="system-ui" font-size="7" text-anchor="middle">Syncs when online</text>
+  </g>
+</svg>

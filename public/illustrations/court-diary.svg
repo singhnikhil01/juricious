@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="100%" height="100%" fill="none">
+  <rect width="600" height="360" rx="12" fill="#0A0A0A" stroke="#262626" stroke-width="2"/>
+  
+  <!-- Window Header Bar -->
+  <rect x="0" y="0" width="600" height="42" rx="12" fill="#141414" stroke="#262626" stroke-width="1"/>
+  <circle cx="24" cy="21" r="5" fill="#E5484D"/>
+  <circle cx="40" cy="21" r="5" fill="#F2C14E"/>
+  <circle cx="56" cy="21" r="5" fill="#2E9E5B"/>
+  <text x="80" y="25" fill="#A3A3A3" font-family="monospace" font-size="11">juricious://diary/mangsir-2083</text>
+  <rect x="440" y="10" width="140" height="22" rx="11" fill="#1F1F1F" stroke="#333333"/>
+  <circle cx="452" cy="21" r="3.5" fill="#2E9E5B"/>
+  <text x="462" y="25" fill="#2E9E5B" font-family="system-ui" font-size="10" font-weight="600">Synced · Offline</text>
+
+  <!-- Month Bar -->
+  <rect x="20" y="58" width="560" height="44" rx="8" fill="#1A1A1A" stroke="#2A2A2A"/>
+  <text x="36" y="86" fill="#FFFFFF" font-family="serif" font-size="18" font-weight="bold">मंसिर २०८३ (Bikram Sambat)</text>
+  <rect x="360" y="66" width="70" height="28" rx="6" fill="#FF9933"/>
+  <text x="375" y="84" fill="#0A0A0A" font-family="system-ui" font-size="11" font-weight="bold">सर्वोच्च</text>
+  <rect x="438" y="66" width="65" height="28" rx="6" fill="#262626"/>
+  <text x="453" y="84" fill="#A3A3A3" font-family="system-ui" font-size="11">पाटन</text>
+  <rect x="510" y="66" width="55" height="28" rx="6" fill="#262626"/>
+  <text x="522" y="84" fill="#A3A3A3" font-family="system-ui" font-size="11">जिल्ला</text>
+
+  <!-- Left: Mini Calendar Strip -->
+  <g transform="translate(20, 118)">
+    <rect width="180" height="220" rx="8" fill="#141414" stroke="#262626"/>
+    <text x="16" y="26" fill="#A3A3A3" font-family="system-ui" font-size="11" font-weight="600">तारेख पात्रो (Dates)</text>
+    
+    <!-- Week Header -->
+    <text x="16" y="52" fill="#737373" font-family="system-ui" font-size="10">आइ</text>
+    <text x="40" y="52" fill="#737373" font-family="system-ui" font-size="10">सोम</text>
+    <text x="64" y="52" fill="#737373" font-family="system-ui" font-size="10">मंग</text>
+    <text x="88" y="52" fill="#737373" font-family="system-ui" font-size="10">बुध</text>
+    <text x="112" y="52" fill="#737373" font-family="system-ui" font-size="10">बिही</text>
+    <text x="136" y="52" fill="#737373" font-family="system-ui" font-size="10">शुक्र</text>
+    <text x="160" y="52" fill="#E5484D" font-family="system-ui" font-size="10">शनि</text>
+
+    <!-- Calendar Grid with Highlights -->
+    <rect x="106" y="66" width="22" height="22" rx="4" fill="#FF9933"/>
+    <text x="110" y="81" fill="#0A0A0A" font-family="system-ui" font-size="11" font-weight="bold">०४</text>
+
+    <rect x="58" y="98" width="22" height="22" rx="4" fill="#262626" stroke="#FF9933"/>
+    <text x="62" y="113" fill="#FF9933" font-family="system-ui" font-size="11" font-weight="bold">०९</text>
+
+    <rect x="10" y="130" width="22" height="22" rx="4" fill="#262626" stroke="#2E9E5B"/>
+    <text x="14" y="145" fill="#FFFFFF" font-family="system-ui" font-size="11" font-weight="bold">१५</text>
+
+    <rect x="106" y="162" width="22" height="22" rx="4" fill="#262626"/>
+    <text x="110" y="177" fill="#A3A3A3" font-family="system-ui" font-size="11">२१</text>
+
+    <line x1="16" y1="198" x2="164" y2="198" stroke="#262626"/>
+    <circle cx="26" cy="208" r="3" fill="#FF9933"/>
+    <text x="36" y="212" fill="#A3A3A3" font-family="system-ui" font-size="10">४ hearings scheduled</text>
+  </g>
+
+  <!-- Right: Active Hearing Card Detail -->
+  <g transform="translate(216, 118)">
+    <rect width="364" height="220" rx="8" fill="#141414" stroke="#262626"/>
+    
+    <!-- Hearing 1 -->
+    <rect x="14" y="14" width="336" height="92" rx="6" fill="#1A1A1A" stroke="#333333"/>
+    <rect x="24" y="24" width="48" height="48" rx="6" fill="#0A0A0A" stroke="#FF9933"/>
+    <text x="32" y="52" fill="#FF9933" font-family="system-ui" font-size="18" font-weight="bold">०४</text>
+    <text x="33" y="66" fill="#A3A3A3" font-family="system-ui" font-size="9">मंसिर</text>
+
+    <text x="82" y="36" fill="#FF9933" font-family="system-ui" font-size="10" font-weight="bold">SUPREME COURT · BENCH 3</text>
+    <text x="82" y="54" fill="#FFFFFF" font-family="system-ui" font-size="12" font-weight="bold">Shrestha v. Dept. of Internal Revenue</text>
+    <text x="82" y="72" fill="#A3A3A3" font-family="system-ui" font-size="10">Case #079-CR-0129 · Final argument tareekh</text>
+    <rect x="280" y="24" width="60" height="20" rx="4" fill="#262626"/>
+    <text x="290" y="38" fill="#FFFFFF" font-family="monospace" font-size="10">11:30 AM</text>
+
+    <!-- Hearing 2 -->
+    <rect x="14" y="116" width="336" height="90" rx="6" fill="#1A1A1A" stroke="#262626"/>
+    <rect x="24" y="126" width="48" height="48" rx="6" fill="#0A0A0A" stroke="#333333"/>
+    <text x="32" y="154" fill="#FFFFFF" font-family="system-ui" font-size="18" font-weight="bold">०९</text>
+    <text x="33" y="168" fill="#A3A3A3" font-family="system-ui" font-size="9">मंसिर</text>
+
+    <text x="82" y="138" fill="#2E9E5B" font-family="system-ui" font-size="10" font-weight="bold">PATAN HIGH COURT · COMM. BENCH</text>
+    <text x="82" y="156" fill="#FFFFFF" font-family="system-ui" font-size="12" font-weight="bold">Himalayan Trading Ltd. v. Kumari Bank</text>
+    <text x="82" y="174" fill="#A3A3A3" font-family="system-ui" font-size="10">Interim injunction hearing &amp; Vakalatnama</text>
+    <rect x="280" y="126" width="60" height="20" rx="4" fill="#262626"/>
+    <text x="292" y="140" fill="#FFFFFF" font-family="monospace" font-size="10">01:15 PM</text>
+  </g>
+</svg>

@@ -1,0 +1,39 @@
+<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" font-family="Georgia,serif">
+  <rect width="400" height="220" fill="#F9F9F9"/>
+  <!-- Nepal Gazette book cover -->
+  <rect x="30" y="20" width="140" height="180" rx="4" fill="#1A1A1A"/>
+  <rect x="34" y="24" width="132" height="172" rx="2" fill="#0A0A0A"/>
+  <!-- Red stripe top -->
+  <rect x="34" y="24" width="132" height="18" rx="2" fill="#C0392B"/>
+  <text x="100" y="38" text-anchor="middle" fill="white" font-size="8" font-family="Arial">नेपाल राजपत्र</text>
+  <!-- Lines -->
+  <rect x="44" y="52" width="112" height="2" rx="1" fill="#262626"/>
+  <rect x="44" y="62" width="90" height="2" rx="1" fill="#262626"/>
+  <rect x="44" y="72" width="100" height="2" rx="1" fill="#262626"/>
+  <rect x="44" y="82" width="70" height="2" rx="1" fill="#262626"/>
+  <rect x="44" y="92" width="112" height="2" rx="1" fill="#262626"/>
+  <rect x="44" y="102" width="80" height="2" rx="1" fill="#FF9933"/>
+  <rect x="44" y="112" width="112" height="2" rx="1" fill="#262626"/>
+  <rect x="44" y="122" width="95" height="2" rx="1" fill="#262626"/>
+  <rect x="44" y="132" width="60" height="2" rx="1" fill="#262626"/>
+  <!-- Book spine -->
+  <rect x="30" y="20" width="10" height="180" rx="2" fill="#333"/>
+
+  <!-- Search result card floating -->
+  <rect x="190" y="40" width="185" height="130" rx="6" fill="white" stroke="#E5E5E5" stroke-width="1.5"/>
+  <rect x="190" y="40" width="185" height="28" rx="6" fill="#0A0A0A"/>
+  <rect x="190" y="54" width="185" height="14" fill="#0A0A0A"/>
+  <text x="282" y="58" text-anchor="middle" fill="#FF9933" font-size="9" font-family="Arial" font-weight="bold">Search Result</text>
+  <rect x="204" y="80" width="60" height="8" rx="2" fill="#F0F0F0"/>
+  <rect x="270" y="80" width="90" height="8" rx="2" fill="#F0F0F0"/>
+  <rect x="204" y="96" width="157" height="6" rx="2" fill="#E5E5E5"/>
+  <rect x="204" y="108" width="130" height="6" rx="2" fill="#E5E5E5"/>
+  <rect x="204" y="120" width="90" height="6" rx="2" fill="#E5E5E5"/>
+  <rect x="204" y="140" width="40" height="14" rx="3" fill="#FF9933"/>
+  <text x="224" y="150" text-anchor="middle" fill="#0A0A0A" font-size="8" font-family="Arial" font-weight="bold">View</text>
+
+  <!-- Dashed border "coming soon" overlay -->
+  <rect x="186" y="36" width="193" height="138" rx="8" fill="none" stroke="#F2C14E" stroke-width="2" stroke-dasharray="6,4" opacity="0.7"/>
+  <rect x="240" y="22" width="80" height="20" rx="10" fill="#FFF8E6" stroke="#F2C14E" stroke-width="1"/>
+  <text x="280" y="35" text-anchor="middle" fill="#8A5800" font-size="8" font-family="Arial" font-weight="bold">Coming soon</text>
+</svg>
