@@ -41,7 +41,7 @@ export function Navbar() {
       className="sticky top-0 z-40 w-full border-b border-[#1A1A1A] bg-[#0A0A0A]"
       aria-label="Primary"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[80vw] px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between gap-4">
           {/* Logo */}
           <a

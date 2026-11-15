@@ -74,7 +74,7 @@ export function BuiltForRealChambers() {
             width={220}
             height={143}
             className="object-contain flex-shrink-0"
-            style={{ height: 'auto' }}
+            style={{ width: 'auto', height: 'auto' }}
           />
           <div className="sm:border-l border-[#262626] sm:pl-6 text-center sm:text-left">
             <div className="text-xs font-mono text-[#FF9933] uppercase tracking-widest mb-2">Plan · Prepare · Prevail</div>

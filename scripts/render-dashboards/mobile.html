@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <title>Juricious Mobile Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      width: 341px;
+      height: 772px;
+      overflow: hidden;
+      background: #090A0D;
+      color: #FFFFFF;
+      font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, sans-serif;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .icon {
+      display: inline-block;
+      width: 15px;
+      height: 15px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
+
+    /* Top App Header */
+    .app-header {
+      padding: 12px 14px 6px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #161822;
+      background: #0C0D12;
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .brand-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: #191B24;
+      border: 1px solid #FF9933;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF9933;
+      font-size: 11px;
+    }
+    .brand-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .badge-os {
+      background: rgba(255, 153, 51, 0.15);
+      border: 1px solid rgba(255, 153, 51, 0.3);
+      color: #FF9933;
+      font-size: 8px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+    }
+    .brand-sub {
+      font-size: 8.5px;
+      color: #FF9933;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bell-btn {
+      position: relative;
+      color: #9BA0B2;
+      display: flex;
+      align-items: center;
+    }
+    .bell-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 5px;
+      height: 5px;
+      background: #FF9933;
+      border-radius: 50%;
+    }
+    .avatar-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #FF9933;
+      color: #0A0A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* Scrollable Container */
+    .app-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px 14px 65px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Date & Courtroom Pill */
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .bs-date {
+      font-size: 9.5px;
+      color: #8E94A7;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .court-active-pill {
+      background: rgba(46, 158, 91, 0.15);
+      border: 1px solid rgba(46, 158, 91, 0.35);
+      color: #34D399;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .court-active-pill .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #34D399;
+    }
+
+    /* Greeting Box */
+    .greeting-box {
+      margin-top: 1px;
+    }
+    .greeting-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+    }
+    .greeting-title span {
+      color: #FF9933;
+    }
+    .greeting-location {
+      font-size: 9.5px;
+      color: #8C92A4;
+      margin-top: 2.5px;
+      line-height: 1.35;
+    }
+
+    /* Priority Hearing Badges */
+    .chips-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .chip {
+      background: #141620;
+      border: 1px solid #232737;
+      border-radius: 6px;
+      padding: 4px 7px;
+      font-size: 9px;
+      font-weight: 600;
+      color: #E2E4EB;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+    .chip.highlight {
+      border-color: rgba(255, 153, 51, 0.3);
+      color: #FF9933;
+    }
+
+    /* Urgent Alert Banner */
+    .alert-card {
+      background: linear-gradient(135deg, #3A0B0F 0%, #200609 100%);
+      border: 1px solid #6E1B22;
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(229, 72, 77, 0.15);
+    }
+    .alert-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .alert-card-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .alert-icon-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #E5484D;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+    .alert-heading {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .alert-badge-count {
+      background: #171822;
+      border: 1px solid #44161B;
+      color: #FF9933;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 1.5px 5px;
+      border-radius: 4px;
+    }
+    .btn-fix {
+      background: #111218;
+      border: 1px solid #4D1A1F;
+      color: #FFFFFF;
+      font-size: 9px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .alert-subtext {
+      font-size: 8.5px;
+      color: #E2B6B9;
+      line-height: 1.3;
+      padding-left: 2px;
+    }
+
+    /* Section Header */
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2px;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #F1F3F7;
+    }
+    .section-meta {
+      font-size: 8.5px;
+      color: #858B9D;
+    }
+
+    /* 2 Stats Cards */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .metric-card {
+      background: #12141D;
+      border: 1px solid #202434;
+      border-radius: 8px;
+      padding: 9px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .metric-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .metric-icon-box {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: #1A1D2A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF9933;
+      font-size: 11px;
+    }
+    .metric-pill {
+      font-size: 8px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 10px;
+    }
+    .metric-pill.orange {
+      background: rgba(255, 153, 51, 0.2);
+      color: #FF9933;
+    }
+    .metric-pill.red {
+      background: rgba(229, 72, 77, 0.2);
+      color: #FF6666;
+    }
+    .metric-val {
+      font-size: 14px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+    }
+    .metric-desc {
+      font-size: 8px;
+      color: #7B8194;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Quick Actions Row */
+    .quick-actions-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+    .quick-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+    }
+    .quick-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: #13151E;
+      border: 1px solid #222637;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF9933;
+      font-size: 14px;
+    }
+    .quick-box.primary {
+      background: #FF9933;
+      color: #0A0A0A;
+      border: none;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(255, 153, 51, 0.3);
+    }
+    .quick-box.accent-green {
+      color: #34D399;
+    }
+    .quick-label {
+      font-size: 8.5px;
+      font-weight: 600;
+      color: #BAC0D0;
+      white-space: nowrap;
+    }
+
+    /* Today's Schedule Card */
+    .schedule-box {
+      background: #11131B;
+      border: 1px solid #1F2231;
+      border-radius: 8px;
+      padding: 9px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .tabs-row {
+      display: flex;
+      gap: 5px;
+      overflow-x: hidden;
+    }
+    .court-tab {
+      font-size: 8px;
+      padding: 2.5px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      white-space: nowrap;
+      background: #181A25;
+      color: #8C92A4;
+      border: 1px solid #232738;
+    }
+    .court-tab.active {
+      background: #FF9933;
+      color: #0A0A0A;
+      border-color: #FF9933;
+    }
+
+    .hearing-item {
+      background: #161823;
+      border-left: 3px solid #FF9933;
+      border-radius: 0 6px 6px 0;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hearing-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .hearing-time {
+      background: #1E2130;
+      color: #FF9933;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    .hearing-court {
+      font-size: 9px;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+    .hearing-dots {
+      color: #6B7280;
+      font-size: 11px;
+    }
+
+    /* Fixed Bottom Nav */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 52px;
+      background: #0B0C11;
+      border-top: 1px solid #1A1C27;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 6px;
+    }
+    .nav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      color: #777D8F;
+      font-size: 8px;
+      font-weight: 500;
+      width: 48px;
+    }
+    .nav-btn.active {
+      color: #FF9933;
+    }
+    .fab-wrap {
+      position: relative;
+      top: -10px;
+    }
+    .fab-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #FF9933;
+      color: #0A0A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 14px rgba(255, 153, 51, 0.4);
+      border: 2px solid #0B0C11;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="brand-wrap">
+      <div class="brand-icon">⚖</div>
+      <div>
+        <div class="brand-name">Juricious <span class="badge-os">नेपाल OS</span></div>
+        <div class="brand-sub">● सर्वोच्च अदालत · बैशाख १२</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="bell-btn">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="bell-dot"></span>
+      </div>
+      <div class="avatar-btn">दि</div>
+    </div>
+  </header>
+
+  <!-- Scrollable App Content -->
+  <div class="app-body">
+    <!-- Status Row -->
+    <div class="status-row">
+      <div class="bs-date">
+        <span>📅 वि.सं. २०८३ कार्तिक १३ - बिहीबार</span>
+      </div>
+      <div class="court-active-pill">
+        <span class="dot"></span>
+        <span>अधिवक्ता सक्रिय (IN COURT)</span>
+      </div>
+    </div>
+
+    <!-- Greeting & Chambers Context -->
+    <div class="greeting-box">
+      <div class="greeting-title">
+        शुभ प्रभात, <span>वरिष्ठ अधिवक्ता</span><br>दिनेश त्रिपाठी
+      </div>
+      <div class="greeting-location">
+        रामशाहपथ सर्वोच्च अदालत परिसर · इजलास नं. २ बहस प्राथमिकता
+      </div>
+      <div class="chips-row">
+        <div class="chip highlight">
+          <span>⚖</span>
+          <span>४ इजलास पेसी आज</span>
+        </div>
+        <div class="chip">
+          <span>!</span>
+          <span>३ म्याद/तारेख ध्यान दिनुपर्ने</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Red Urgent Alert -->
+    <div class="alert-card">
+      <div class="alert-card-top">
+        <div class="alert-card-left">
+          <div class="alert-icon-circle">!</div>
+          <div>
+            <div class="alert-heading">अति जरुरी हदम्याद चेतावनी</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <span class="alert-badge-count">३ वटा</span>
+          <button class="btn-fix">सच्याउनुहोस् →</button>
+        </div>
+      </div>
+      <div class="alert-subtext">
+        पाटन उच्च पुनरावेदन तथा म्याद तामेल विवरण तत्काल अद्यावधिक गर्नुहोस्...
+      </div>
+    </div>
+
+    <!-- Chamber Stats -->
+    <div class="section-head">
+      <span class="section-title">च्याम्बर अद्यावधिक तथ्याङ्क</span>
+      <span class="section-meta">आजको सारांश</span>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-top">
+          <div class="metric-icon-box">⚖</div>
+          <span class="metric-pill orange">आजको पेसी</span>
+        </div>
+        <div class="metric-val">४ मुद्दा सूचीकृत</div>
+        <div class="metric-desc">२ सर्वोच्च · १ पाटन · १ जिल्ला</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-top">
+          <div class="metric-icon-box" style="color:#FF6666;">📅</div>
+          <span class="metric-pill red">अति जरुरी</span>
+        </div>
+        <div class="metric-val">३ तारेख म्याद</div>
+        <div class="metric-desc">म्याद थप / पुनरावेदन पत्र</div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="section-head">
+      <span class="section-title">⚡ द्रुत कार्यहरू (Quick Actions)</span>
+      <span class="section-meta">एक-ट्याप पहुँच</span>
+    </div>
+    <div class="quick-actions-row">
+      <div class="quick-btn">
+        <div class="quick-box primary">+</div>
+        <span class="quick-label">नयाँ पेसी</span>
+      </div>
+      <div class="quick-btn">
+        <div class="quick-box">📄</div>
+        <span class="quick-label">मुद्दा दर्ता</span>
+      </div>
+      <div class="quick-btn">
+        <div class="quick-box">💬</div>
+        <span class="quick-label">SMS आयात</span>
+      </div>
+      <div class="quick-btn">
+        <div class="quick-box accent-green">✨</div>
+        <span class="quick-label">AI मस्यौदा</span>
+      </div>
+      <div class="quick-btn">
+        <div class="quick-box">📖</div>
+        <span class="quick-label">नेकाप नजिर</span>
+      </div>
+    </div>
+
+    <!-- Today's Schedule -->
+    <div class="section-head">
+      <span class="section-title">आजको इजलास तथा पेसी कार्यतालिका</span>
+      <span class="section-meta" style="color:#FF9933;font-weight:700;">४ मुद्दा</span>
+    </div>
+    <div class="schedule-box">
+      <div class="tabs-row">
+        <div class="court-tab active">सबै (४)</div>
+        <div class="court-tab">सर्वोच्च अदालत (२)</div>
+        <div class="court-tab">पाटन उच्च (१)</div>
+        <div class="court-tab">काठमाडौँ (१)</div>
+      </div>
+      <div class="hearing-item">
+        <div class="hearing-left">
+          <span class="hearing-time">१०:३० AM</span>
+          <span class="hearing-court">सर्वोच्च अदालत · इजलास नं. २</span>
+        </div>
+        <span class="hearing-dots">⋮</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <nav class="bottom-nav">
+    <div class="nav-btn active">
+      <span style="font-size:12px;">⚖</span>
+      <span>इजलास</span>
+    </div>
+    <div class="nav-btn">
+      <span style="font-size:12px;">📁</span>
+      <span>मिसिल</span>
+    </div>
+    <div class="fab-wrap">
+      <div class="fab-btn">+</div>
+    </div>
+    <div class="nav-btn">
+      <span style="font-size:12px;">📅</span>
+      <span>तारेख</span>
+    </div>
+    <div class="nav-btn">
+      <span style="font-size:12px;">🏛</span>
+      <span>च्याम्बर</span>
+    </div>
+  </nav>
+
+</body>
+</html>

@@ -147,12 +147,12 @@ export function PlatformShowcase() {
                   {/* Desktop Image */}
                   <div className="relative aspect-[1024/723] w-full bg-[#0E0F12]">
                     <Image
-                      src="/platforms/juricious-web-dashboard.jpg"
+                      src="/platforms/juricious-web-dashboard.png"
                       alt="Juricious Web Command Center — Nepal Legal OS desktop dashboard with Bikram Sambat calendar, Tareekh alerts and Chambers overview"
                       fill
                       priority
                       className="object-cover object-top"
-                      sizes="(max-width: 1024px) 100vw, 66vw"
+                      sizes="(max-width: 1024px) 100vw, 850px"
                     />
                   </div>
 
@@ -189,7 +189,7 @@ export function PlatformShowcase() {
                       fill
                       priority
                       className="object-cover object-top pt-2"
-                      sizes="(max-width: 768px) 80vw, 30vw"
+                      sizes="(max-width: 640px) 290px, 320px"
                     />
                   </div>
 
@@ -235,12 +235,12 @@ export function PlatformShowcase() {
                 {/* Main Web Screenshot */}
                 <div className="relative aspect-[1024/723] w-full bg-[#0E0F12]">
                   <Image
-                    src="/platforms/juricious-web-dashboard.jpg"
+                    src="/platforms/juricious-web-dashboard.png"
                     alt="Juricious Desktop Web Application with full chambers management in Nepali and Bikram Sambat"
                     fill
                     priority
                     className="object-contain object-top"
-                    sizes="100vw"
+                    sizes="(max-width: 1280px) 100vw, 1200px"
                   />
                 </div>
               </div>
@@ -292,7 +292,7 @@ export function PlatformShowcase() {
                       fill
                       priority
                       className="object-cover object-top pt-2"
-                      sizes="(max-width: 768px) 90vw, 35vw"
+                      sizes="320px"
                     />
                   </div>
                 </div>

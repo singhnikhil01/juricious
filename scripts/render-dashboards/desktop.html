@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+  <meta charset="UTF-8">
+  <title>Juricious Desktop Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body {
+      width: 1024px;
+      height: 723px;
+      overflow: hidden;
+      background: #0B0C10;
+      color: #E2E4E9;
+      font-family: 'Inter', 'Noto Sans Devanagari', -apple-system, sans-serif;
+      display: flex;
+    }
+
+    /* SVG Icon Helpers */
+    .icon {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vertical-align: middle;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      width: 228px;
+      height: 100%;
+      background: #0F1015;
+      border-right: 1px solid #1E202B;
+      display: flex;
+      flex-direction: column;
+      padding: 14px 12px;
+      flex-shrink: 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 6px 14px 6px;
+    }
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #171821;
+      border: 1px solid #FF9933;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF9933;
+    }
+    .brand-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.2px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .brand-title .dot {
+      color: #FF9933;
+    }
+    .brand-sub {
+      font-size: 9.5px;
+      color: #8E93A3;
+      font-weight: 500;
+    }
+
+    .btn-quick-add {
+      background: #FF9933;
+      color: #0A0A0A;
+      font-weight: 700;
+      font-size: 11.5px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(255, 153, 51, 0.25);
+    }
+
+    .search-box {
+      background: #15161F;
+      border: 1px solid #242735;
+      border-radius: 6px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #7A8094;
+      font-size: 10.5px;
+      margin-bottom: 14px;
+    }
+    .search-kbd {
+      background: #1D1F2C;
+      border: 1px solid #2E3244;
+      border-radius: 4px;
+      padding: 1px 4px;
+      font-size: 9px;
+      color: #A0A5B8;
+      font-family: monospace;
+    }
+
+    .nav-group {
+      margin-bottom: 12px;
+    }
+    .nav-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #5C6274;
+      padding: 0 8px 4px 8px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5.5px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      color: #A3A8B8;
+      font-weight: 500;
+      margin-bottom: 1px;
+    }
+    .nav-item.active {
+      background: #1E202B;
+      color: #FFFFFF;
+      font-weight: 600;
+      position: relative;
+    }
+    .nav-item.active::after {
+      content: '';
+      position: absolute;
+      right: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #FF9933;
+    }
+    .nav-item-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-family: monospace;
+    }
+    .badge-orange { background: rgba(255,153,51,0.2); color: #FF9933; }
+    .badge-red { background: rgba(229,72,77,0.2); color: #FF6666; }
+    .badge-gray { background: #222430; color: #8F94A6; }
+    .badge-green { background: rgba(46,158,91,0.2); color: #34D399; }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid #1E202B;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .user-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: #1D1F2C;
+      border: 1px solid #2B2F40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #FF9933;
+      font-weight: bold;
+    }
+    .user-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+    .user-role {
+      font-size: 9px;
+      color: #787E91;
+    }
+    .user-actions {
+      display: flex;
+      gap: 6px;
+      color: #6B7280;
+    }
+
+    /* Main Container */
+    .main {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #0C0D11;
+    }
+
+    /* Top Bar */
+    .topbar {
+      height: 44px;
+      border-bottom: 1px solid #1B1D27;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      background: #0E0F14;
+      flex-shrink: 0;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .date-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #F1F2F5;
+      background: #151720;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #232635;
+    }
+    .date-badge .greg {
+      color: #8E93A4;
+      font-size: 10px;
+      font-weight: 400;
+    }
+    .topbar-links {
+      display: flex;
+      gap: 14px;
+      font-size: 11px;
+      color: #888E9F;
+    }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .sync-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(46, 158, 91, 0.12);
+      border: 1px solid rgba(46, 158, 91, 0.3);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      color: #34D399;
+      font-weight: 500;
+    }
+    .sync-pill .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #34D399;
+    }
+    .lang-toggle {
+      font-size: 10px;
+      font-weight: 600;
+      color: #9BA0B2;
+      background: #151720;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #232635;
+    }
+    .icon-btn {
+      color: #9BA0B2;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .icon-btn .badge-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 5px;
+      height: 5px;
+      background: #FF9933;
+      border-radius: 50%;
+    }
+    .topbar-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #FF9933;
+      color: #0A0A0A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    /* Content Area */
+    .content {
+      flex: 1;
+      padding: 14px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: hidden;
+    }
+
+    /* Welcome Card */
+    .welcome-card {
+      background: linear-gradient(180deg, #13141B 0%, #101117 100%);
+      border: 1px solid #222533;
+      border-radius: 10px;
+      padding: 13px 16px;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    .welcome-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .welcome-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      color: #8C91A2;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(46, 158, 91, 0.14);
+      color: #2E9E5B;
+      padding: 1.5px 7px;
+      border-radius: 10px;
+      font-size: 9.5px;
+      font-weight: 600;
+      border: 1px solid rgba(46, 158, 91, 0.25);
+    }
+    .status-badge .dot {
+      width: 4px;
+      height: 4px;
+      background: #2E9E5B;
+      border-radius: 50%;
+    }
+    .confidential-tag {
+      font-size: 9.5px;
+      color: #8C91A2;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .welcome-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .welcome-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.25;
+      letter-spacing: -0.2px;
+    }
+    .welcome-title span {
+      color: #FF9933;
+    }
+    .welcome-desc {
+      font-size: 11px;
+      color: #9DA3B5;
+      margin-top: 4px;
+      line-height: 1.45;
+      max-width: 510px;
+    }
+    .welcome-actions {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .btn-sms-import {
+      background: #171922;
+      border: 1px solid #2B2F40;
+      color: #E1E3EB;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 7px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-new-hearing {
+      background: #FF9933;
+      color: #0A0A0A;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 7px 13px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 8px rgba(255, 153, 51, 0.25);
+    }
+
+    .welcome-footer {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid #1C1E2A;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+    }
+    .sync-text {
+      color: #8C91A2;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .sync-link {
+      color: #FF9933;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* Red Urgent Alert */
+    .alert-banner {
+      background: linear-gradient(90deg, #2D0B0E 0%, #1F070A 100%);
+      border: 1px solid #5C181E;
+      border-radius: 8px;
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .alert-left {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .alert-icon-box {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(229, 72, 77, 0.2);
+      border: 1px solid #E5484D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FF6666;
+      flex-shrink: 0;
+    }
+    .alert-title-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .alert-tag {
+      background: #E5484D;
+      color: #FFFFFF;
+      font-size: 8.5px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .alert-title {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+    .alert-sub {
+      font-size: 10px;
+      color: #D4A3A7;
+      margin-top: 1.5px;
+      line-height: 1.35;
+    }
+    .btn-alert-action {
+      background: #FEE7E8;
+      color: #991B1B;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    /* 5 Stats Cards Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .stat-card {
+      background: #111219;
+      border: 1px solid #1F222F;
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 88px;
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #797F92;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .stat-header a {
+      color: #5C6275;
+      text-decoration: none;
+      font-size: 10px;
+    }
+    .stat-number-row {
+      margin-top: 2px;
+    }
+    .stat-number {
+      font-size: 18px;
+      font-weight: 800;
+      color: #FFFFFF;
+      letter-spacing: -0.3px;
+    }
+    .stat-number.warning {
+      color: #FF9933;
+    }
+    .stat-sub {
+      font-size: 9px;
+      color: #7C8294;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Quick Actions Row */
+    .quick-actions-box {
+      background: #101117;
+      border: 1px solid #1C1F2B;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-top: auto;
+    }
+    .quick-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .quick-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #E2E4EB;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .quick-title span {
+      color: #FF9933;
+    }
+    .quick-subtitle {
+      font-size: 9.5px;
+      color: #7A8094;
+      font-weight: 400;
+    }
+    .quick-badge {
+      font-size: 9px;
+      color: #8C92A4;
+      background: #171922;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #232635;
+    }
+
+    .quick-tiles {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+    .quick-tile {
+      background: #141620;
+      border: 1px solid #222533;
+      border-radius: 6px;
+      padding: 7px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 60px;
+      position: relative;
+    }
+    .quick-tile.highlight {
+      border-color: rgba(255, 153, 51, 0.4);
+      background: #19171C;
+    }
+    .quick-tile-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .quick-icon {
+      font-size: 12px;
+      color: #FF9933;
+    }
+    .quick-pill {
+      font-size: 7.5px;
+      font-weight: 700;
+      padding: 1px 4px;
+      border-radius: 3px;
+      background: #202330;
+      color: #8E94A7;
+    }
+    .quick-pill.orange {
+      background: rgba(255,153,51,0.2);
+      color: #FF9933;
+    }
+    .quick-pill.green {
+      background: rgba(46,158,91,0.2);
+      color: #34D399;
+    }
+    .quick-tile-name {
+      font-size: 10px;
+      font-weight: 600;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+    .quick-tile-sub {
+      font-size: 7.5px;
+      color: #7A8094;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg class="icon" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path d="M12 3v18M3 9l9-6 9 6M3 9l3 8h6l-3-8M15 17l-3-8 9-6-3 8h-6"/></svg>
+      </div>
+      <div>
+        <div class="brand-title">Juricious <span class="dot">•</span></div>
+        <div class="brand-sub">नेपाल लिगल OS · न्याय मण्डप</div>
+      </div>
+    </div>
+
+    <button class="btn-quick-add">
+      <svg class="icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      <span>+ नयाँ थप्नुहोस् (Quick Add)</span>
+    </button>
+
+    <div class="search-box">
+      <span>खोज्नुहोस् (मुद्दा, पेसी...)</span>
+      <span class="search-kbd">⌘K</span>
+    </div>
+
+    <!-- Navigation Groups -->
+    <div class="nav-group">
+      <div class="nav-label">सिंहावलोकन</div>
+      <div class="nav-item active">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>ड्यासबोर्ड</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">इजलास तथा डायरी</div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M6 8l6-5 6 5M6 8l3 7h6l-3-7"/></svg>
+          <span>आजको इजलास</span>
+        </div>
+        <span class="nav-badge badge-orange">४</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          <span>इजलास दिन पात्रो</span>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+          <span>हप्ताको पेसी</span>
+        </div>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span>छुट्न लागेका तारेख</span>
+        </div>
+        <span class="nav-badge badge-red">३</span>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">मुद्दा तथा कार्य व्यवस्थापन</div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span>मुद्दा तथा मिसिलहरू</span>
+        </div>
+        <span class="nav-badge badge-gray">१५</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>कार्य तथा हदम्याद</span>
+        </div>
+        <span class="nav-badge badge-gray">२१</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>कागजात तथा मिसिल</span>
+        </div>
+        <span class="nav-badge badge-green">AI</span>
+      </div>
+      <div class="nav-item">
+        <div class="nav-item-left">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          <span>पक्षकारहरू</span>
+        </div>
+        <span class="nav-badge badge-gray">१२</span>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">दि</div>
+        <div>
+          <div class="user-name">दिनेश त्रिपाठी</div>
+          <div class="user-role">वरिष्ठ अधिवक्ता · Chamber Owner</div>
+        </div>
+      </div>
+      <div class="user-actions">
+        <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Workspace -->
+  <main class="main">
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="date-badge">
+          <span>📅 वि.सं. २०८३ कार्तिक १३ · बिहीबार</span>
+          <span class="greg">(2026-10-29 AD)</span>
+        </div>
+        <div class="topbar-links">
+          <span>इजलास सूची</span>
+          <span>तारेख पात्रो</span>
+          <span>मिसिल भण्डार</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="sync-pill">
+          <span class="dot"></span>
+          <span>१ सिंक बाँकी</span>
+        </div>
+        <div class="lang-toggle">EN | नेपा</div>
+        <div class="icon-btn">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="badge-dot"></span>
+        </div>
+        <div class="topbar-avatar">दि</div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content Area -->
+    <div class="content">
+      <!-- 1. Welcome Card -->
+      <section class="welcome-card">
+        <div class="welcome-meta">
+          <div class="welcome-meta-left">
+            <span>बिहीबार, १३ कार्तिक २०८३ · 29 Oct 2026</span>
+            <span>•</span>
+            <span class="status-badge"><span class="dot"></span>अधिवक्ता कार्यकक्ष (Chamber Active)</span>
+            <span>•</span>
+            <span>मिसिल सिजन २०८३/०८४</span>
+          </div>
+          <div class="confidential-tag">
+            <svg class="icon" style="width:12px;height:12px;" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>गोपनीय कानुनी मिसिल</span>
+          </div>
+        </div>
+
+        <div class="welcome-body">
+          <div>
+            <h1 class="welcome-title">शुभ प्रभात, वरिष्ठ अधिवक्ता <span>दिनेश त्रिपाठी</span></h1>
+            <p class="welcome-desc">
+              नेपाल लिगल OS ड्यासबोर्डमा स्वागत छ। आज तपाईंको फर्मका ४ वटा इजलास पेसी छन्, र ३ वटा छुट्न लागेका तारेख विवरण दर्ता हुन बाँकी छन्।
+            </p>
+          </div>
+          <div class="welcome-actions">
+            <button class="btn-sms-import">
+              <svg class="icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              <span>एसएमएसबाट पेसी आयात</span>
+            </button>
+            <button class="btn-new-hearing">
+              <svg class="icon" style="width:13px;height:13px;" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+              <span>+ नयाँ पेसी / तारेख दर्ता</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="welcome-footer">
+          <div class="sync-text">
+            <svg class="icon" style="width:12px;height:12px;color:#FF9933;" viewBox="0 0 24 24"><path d="M23 4v6h-6M1 20v-6h6M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            <span>१ वटा पेसी अफलाइन परिवर्तन सर्भरमा सिंक हुन बाँकी छन् (न्याय मण्डप लोकल क्यास)</span>
+          </div>
+          <a href="#" class="sync-link">अहिले सिंक गर्नुहोस् →</a>
+        </div>
+      </section>
+
+      <!-- 2. Urgent Red Alert -->
+      <section class="alert-banner">
+        <div class="alert-left">
+          <div class="alert-icon-box">
+            <svg class="icon" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div>
+            <div class="alert-title-row">
+              <span class="alert-tag">अति जरुरी</span>
+              <span class="alert-title">छुट्न लागेका वा म्याद नाघ्न लागेका तारेख अलर्ट (३ वटा मुद्दा)</span>
+            </div>
+            <div class="alert-sub">
+              पछिल्लो सुनुवाइ मिति समाप्त भइसकेको तर आगामी तारेख वा आदेश अपडेट नभएका मुद्दाहरू छन्। म्याद गुज्रिएमा पक्षकारको कानुनी अधिकारमा गम्भीर क्षति पुग्न सक्छ।
+            </div>
+          </div>
+        </div>
+        <button class="btn-alert-action">
+          <span>तारेखहरू सच्याउनुहोस्</span>
+          <span>→</span>
+        </button>
+      </section>
+
+      <!-- 3. Five Chambers Metric Cards -->
+      <section class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>TODAY'S HEARINGS & TAREEKH</span>
+            <a href="#">हेर्नुहोस् ↗</a>
+          </div>
+          <div class="stat-number-row">
+            <div class="stat-number">४ <span style="font-size:13px;font-weight:600;color:#A0A5B8;">वटा</span></div>
+          </div>
+          <div class="stat-sub">२ सर्वोच्च, १ पाटन, १ काठमाडौँ</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>LOST DATES & OVERDUE</span>
+            <a href="#">हेर्नुहोस् ↗</a>
+          </div>
+          <div class="stat-number-row">
+            <div class="stat-number warning">३ <span style="font-size:13px;font-weight:600;color:#FFA94D;">मुद्दा</span></div>
+          </div>
+          <div class="stat-sub">म्याद थप वा फैसला विवरण दर्ता...</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>ACTIVE MATTERS & CASES</span>
+            <a href="#">हेर्नुहोस् ↗</a>
+          </div>
+          <div class="stat-number-row">
+            <div class="stat-number">१५ <span style="font-size:13px;font-weight:600;color:#A0A5B8;">मिसिल</span></div>
+          </div>
+          <div class="stat-sub">फर्ममा दर्ता रहेका चालु मिसिलहरू</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>PENDING TASKS</span>
+            <a href="#">हेर्नुहोस् ↗</a>
+          </div>
+          <div class="stat-number-row">
+            <div class="stat-number">२१ <span style="font-size:13px;font-weight:600;color:#A0A5B8;">कार्य</span></div>
+          </div>
+          <div class="stat-sub">ड्राफ्टिङ, म्याद तामेल, प्रमाण...</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span>UNPAID FEES & INVOICES</span>
+            <a href="#">हेर्नुहोस् ↗</a>
+          </div>
+          <div class="stat-number-row">
+            <div class="stat-number">२ <span style="font-size:13px;font-weight:600;color:#A0A5B8;">बीजक</span></div>
+          </div>
+          <div class="stat-sub">रु. १८४,७५० उठ्न बाँकी रकम</div>
+        </div>
+      </section>
+
+      <!-- 4. Quick Actions Row -->
+      <section class="quick-actions-box">
+        <div class="quick-header">
+          <div class="quick-title">
+            <span>⚡</span>
+            <span>द्रुत कार्यहरू (Quick Actions)</span>
+            <span class="quick-subtitle">| अदालती प्रक्रिया र दैनिक कार्यहरू तत्काल सुरु गर्नुहोस्</span>
+          </div>
+          <span class="quick-badge">१-क्लिक सुविधाहरू</span>
+        </div>
+
+        <div class="quick-tiles">
+          <div class="quick-tile highlight">
+            <div class="quick-tile-top">
+              <span class="quick-icon">📅</span>
+              <span class="quick-pill orange">द्रुत दर्ता</span>
+            </div>
+            <div>
+              <div class="quick-tile-name">नयाँ पेसी / तारेख</div>
+              <div class="quick-tile-sub">New Hearing Date</div>
+            </div>
+          </div>
+
+          <div class="quick-tile">
+            <div class="quick-tile-top">
+              <span class="quick-icon">📁</span>
+              <span class="quick-pill">मिसिल</span>
+            </div>
+            <div>
+              <div class="quick-tile-name">नयाँ मुद्दा दर्ता</div>
+              <div class="quick-tile-sub">Register Court Case</div>
+            </div>
+          </div>
+
+          <div class="quick-tile">
+            <div class="quick-tile-top">
+              <span class="quick-icon">💬</span>
+              <span class="quick-pill">अदालत SMS</span>
+            </div>
+            <div>
+              <div class="quick-tile-name">एसएमएसबाट पेसी</div>
+              <div class="quick-tile-sub">Import via Court SMS</div>
+            </div>
+          </div>
+
+          <div class="quick-tile">
+            <div class="quick-tile-top">
+              <span class="quick-icon">✨</span>
+              <span class="quick-pill green">AI असिस्टेन्ट</span>
+            </div>
+            <div>
+              <div class="quick-tile-name">AI कानुनी मस्यौदा</div>
+              <div class="quick-tile-sub">Drafting Studio</div>
+            </div>
+          </div>
+
+          <div class="quick-tile">
+            <div class="quick-tile-top">
+              <span class="quick-icon">👤</span>
+              <span class="quick-pill">ग्राहक</span>
+            </div>
+            <div>
+              <div class="quick-tile-name">नयाँ पक्षकार थप्नुहोस्</div>
+              <div class="quick-tile-sub">Add Client Profile</div>
+            </div>
+          </div>
+
+          <div class="quick-tile">
+            <div class="quick-tile-top">
+              <span class="quick-icon">📖</span>
+              <span class="quick-pill">अनुसन्धान</span>
+            </div>
+            <div>
+              <div class="quick-tile-name">नेकाप नजिर खोज</div>
+              <div class="quick-tile-sub">NKP Precedents</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>
